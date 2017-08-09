@@ -1,7 +1,11 @@
 {
-  "env": { "node": true },
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "node": true
+  },
   "extends": "airbnb/base",
-  "globals": { "Parse": true },
 	"rules": {
     "indent": [2, 2, {
       "SwitchCase": 1,

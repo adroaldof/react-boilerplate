@@ -4,6 +4,8 @@ const merge = require('webpack-merge');
 const path = require('path');
 const webpack = require('webpack');
 
+const parts = require('./webpack.parts');
+
 
 const PATHS = {
   app: path.join(__dirname, 'app'),
@@ -11,7 +13,7 @@ const PATHS = {
   nodeModules: path.join(__dirname, 'node_modules'),
 };
 
-const commonConfigs = {
+const initialConfigs = {
   entry: {
     app: PATHS.app,
   },
@@ -23,12 +25,17 @@ const commonConfigs = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Webpack demo',
+      title: 'React Boilerplate',
     }),
   ],
 };
 
-const productionConfigs = () => merge(commonConfigs);
+const commonConfigs = merge([
+  initialConfigs,
+  parts.lintJS({ include: PATHS.app }),
+]);
+
+const productionConfigs = () => merge([commonConfigs]);
 
 const developmentConfigs = () => {
   const envConfigs = {
@@ -37,11 +44,18 @@ const developmentConfigs = () => {
       stats: 'errors-only',
       host: process.env.HOST || 'localhost',
       port: process.env.PORT || 8080,
+
+      overlay: {
+        errors: true,
+        warnings: true,
+      },
+
       watchOptions: {
         aggregateTimeout: 300,
         poll: 1000,
       },
     },
+
     plugins: [
       new WatchIgnorePlugin([
         PATHS.nodeModules,
@@ -49,7 +63,7 @@ const developmentConfigs = () => {
     ],
   };
 
-  return merge(envConfigs, commonConfigs);
+  return merge([envConfigs, commonConfigs]);
 };
 
 
