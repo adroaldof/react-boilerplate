@@ -4,4 +4,4 @@ export default (text = 'oe') => {
   element.innerHTML = text;
 
   return element;
-}
+};
