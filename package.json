@@ -1,0 +1,32 @@
+{
+  "name": "react-boilerplate",
+  "version": "0.0.1",
+  "description": "React bootstrap",
+  "main": "app/index.js",
+  "scripts": {
+    "start": "nodemon --watch webpack.config.js --exec 'webpack-dev-server --env development'",
+    "build": "webpack --env production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/adroaldof/react-boilerplate.git"
+  },
+  "keywords": [
+    "ReactJS",
+    "Webpack"
+  ],
+  "author": "Adroaldo de Andrade <adroaldof@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adroaldof/react-boilerplate/issues"
+  },
+  "homepage": "https://github.com/adroaldof/react-boilerplate#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.30.1",
+    "nodemon": "^1.11.0",
+    "watch-ignore-webpack-plugin": "^1.0.0",
+    "webpack": "^3.5.1",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-merge": "^4.1.0"
+  }
+}
