@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const WatchIgnorePlugin = require('watch-ignore-webpack-plugin');
 const merge = require('webpack-merge');
 const path = require('path');
 const webpack = require('webpack');
@@ -57,7 +56,7 @@ const developmentConfigs = () => {
     },
 
     plugins: [
-      new WatchIgnorePlugin([
+      new webpack.WatchIgnorePlugin([
         PATHS.nodeModules,
       ]),
     ],
