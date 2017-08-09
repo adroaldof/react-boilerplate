@@ -32,6 +32,7 @@ const initialConfigs = {
 const commonConfigs = merge([
   initialConfigs,
   parts.lintJS({ include: PATHS.app }),
+  parts.loadCSS(),
 ]);
 
 const productionConfigs = () => merge([commonConfigs]);
@@ -66,7 +67,7 @@ const developmentConfigs = () => {
 };
 
 
-module.exports = (env) => {
+module.exports = env => {
   console.log(`Running on environment "${env}"`);
 
   const envConfigs = {
